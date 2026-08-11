@@ -1,4 +1,17 @@
+import sys
 import os
+
+# Dynamic package path configuration to support absolute imports ('from backend.config ...')
+# even if the application is run directly or deployed with 'backend' as the root directory.
+if "backend" not in sys.modules:
+    try:
+        import types
+        backend_module = types.ModuleType("backend")
+        sys.modules["backend"] = backend_module
+        backend_module.__path__ = [os.path.dirname(os.path.abspath(__file__))]
+    except Exception as e:
+        pass
+
 import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -68,7 +81,14 @@ def read_root():
     return {
         "name": "Panchayat AI API Service",
         "status": "Operational",
+        "message": "Panchayat Society Backend is running",
         "documentation": "/docs"
+    }
+
+@app.get("/health")
+def health_check():
+    return {
+        "status": "healthy"
     }
 
 if __name__ == "__main__":

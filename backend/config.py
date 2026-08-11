@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     TWILIO_PHONE_NUMBER: str = Field(default="", env="TWILIO_PHONE_NUMBER")
 
     # File storage
-    UPLOAD_DIR: str = Field(default="uploads", env="UPLOAD_DIR")
+    UPLOAD_DIR: str = Field(default="/tmp/uploads" if os.environ.get("VERCEL") else "uploads", env="UPLOAD_DIR")
 
     # SMTP Mail Server (Simulated by default)
     SMTP_HOST: str = Field(default="smtp.gmail.com", env="SMTP_HOST")
@@ -41,7 +41,11 @@ class Settings(BaseSettings):
 settings = Settings()
 
 # Ensure uploads directory exists
-os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
-os.makedirs(os.path.join(settings.UPLOAD_DIR, "documents"), exist_ok=True)
-os.makedirs(os.path.join(settings.UPLOAD_DIR, "complaints"), exist_ok=True)
-os.makedirs(os.path.join(settings.UPLOAD_DIR, "voice"), exist_ok=True)
+try:
+    os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
+    os.makedirs(os.path.join(settings.UPLOAD_DIR, "documents"), exist_ok=True)
+    os.makedirs(os.path.join(settings.UPLOAD_DIR, "complaints"), exist_ok=True)
+    os.makedirs(os.path.join(settings.UPLOAD_DIR, "voice"), exist_ok=True)
+except Exception as e:
+    import logging
+    logging.getLogger("panchayat_ai.config").warning(f"Could not create upload directories: {e}. If running on Vercel, this is expected.")

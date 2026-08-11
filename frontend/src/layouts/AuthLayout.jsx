@@ -14,11 +14,14 @@ const AuthLayout = ({ children, title = "Panchayat AI", subtitle = "AI-Powered S
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        // Sleek government gradient
-        background: 'linear-gradient(135deg, #1565C0 0%, #1e88e5 50%, #43A047 100%)',
         position: 'relative',
         py: 4,
-        overflowY: 'auto'
+        overflowY: 'auto',
+        backgroundImage: `linear-gradient(180deg, rgba(10, 30, 55, 0.32) 0%, rgba(10, 30, 55, 0.18) 40%, rgba(10, 30, 55, 0.48) 100%), url('/login-bg.jpg')`,
+        backgroundSize: '120%',
+        backgroundPosition: 'center 20%',
+        backgroundRepeat: 'no-repeat',
+        backgroundBlendMode: 'soft-light',
       }}
     >
       <Container maxWidth="xs" sx={{ position: 'relative', zIndex: 2 }}>
@@ -62,7 +65,9 @@ const AuthLayout = ({ children, title = "Panchayat AI", subtitle = "AI-Powered S
               width: '100%',
               borderRadius: 5,
               boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.20)',
-              bgcolor: 'background.paper',
+              bgcolor: 'rgba(255,255,255,0.94)',
+              backdropFilter: 'blur(18px)',
+              border: '1px solid rgba(255,255,255,0.5)',
             }}
           >
             {children}
