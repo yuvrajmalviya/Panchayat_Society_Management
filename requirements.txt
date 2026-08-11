@@ -13,4 +13,5 @@ reportlab
 pillow
 python-dotenv
 email-validator
+numpy
 
