@@ -68,7 +68,14 @@ def read_root():
     return {
         "name": "Panchayat AI API Service",
         "status": "Operational",
+        "message": "Panchayat Society Backend is running",
         "documentation": "/docs"
+    }
+
+@app.get("/health")
+def health_check():
+    return {
+        "status": "healthy"
     }
 
 if __name__ == "__main__":

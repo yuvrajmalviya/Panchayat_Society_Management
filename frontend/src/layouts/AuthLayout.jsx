@@ -4,7 +4,6 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { motion } from 'framer-motion';
-import heroBg from '../assets/hero.png';
 
 const AuthLayout = ({ children, title = "Panchayat AI", subtitle = "AI-Powered Society Portal" }) => {
   return (
@@ -18,10 +17,11 @@ const AuthLayout = ({ children, title = "Panchayat AI", subtitle = "AI-Powered S
         position: 'relative',
         py: 4,
         overflowY: 'auto',
-        backgroundImage: `linear-gradient(135deg, rgba(21,101,192,0.85) 0%, rgba(30,136,229,0.75) 50%, rgba(67,160,71,0.85) 100%), url(${heroBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundImage: `linear-gradient(180deg, rgba(10, 30, 55, 0.32) 0%, rgba(10, 30, 55, 0.18) 40%, rgba(10, 30, 55, 0.48) 100%), url('/login-bg.jpg')`,
+        backgroundSize: '120%',
+        backgroundPosition: 'center 20%',
         backgroundRepeat: 'no-repeat',
+        backgroundBlendMode: 'soft-light',
       }}
     >
       <Container maxWidth="xs" sx={{ position: 'relative', zIndex: 2 }}>
