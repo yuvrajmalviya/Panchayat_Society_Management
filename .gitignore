@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env.*
+.pytest_cache/
+.python-version
+
+# Virtual environments
+.venv/
+backend/venv/
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Vite build output
+frontend/dist/
+frontend/node_modules/.vite/
+
+# Secrets and local config
+.env
+.env.local
+.env.*.local
+
+# Logs and runtime files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database / local data
+mongo_data/
+mongo_log/
+uploads/
+
+# Runtime caches
+*.cache
+cache/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+motor
+pymongo
+pydantic
+pydantic-settings
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+google-generativeai
+pypdf
+reportlab
+pillow
+python-dotenv
+# If native compilation fails on Python 3.14, these can be commented out and we use pure Python/API fallbacks
+sentence-transformers
+faiss-cpu
