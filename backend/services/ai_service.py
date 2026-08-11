@@ -689,17 +689,24 @@ async def generate_chat_digest(chat_text: str) -> Dict[str, any]:
         elif any(w in line_lower for w in ["deadline", "by date", "before", "due", "latest by", "august", "september"]):
             deadlines.append(line_clean)
             
-    # Default mock values if nothing was found
-    if not decisions:
-        decisions = ["Agreed to schedule the next society AGM next Sunday.", "Approved repair works for the lane 3 sewer pipe."]
-    if not tasks:
-        tasks = ["Mr. Sharma to contact local electrician.", "Security guards to verify guest QR codes at Gate 1."]
-    if not announcements:
-        announcements = ["Water supply shutdown scheduled on Thursday from 9 AM to 1 PM for tank maintenance."]
-    if not deadlines:
-        deadlines = ["Maintenance fee payment due date: 15th August.", "Submit vehicle stickers applications by Saturday."]
+    non_empty_lines = [l.strip() for l in lines if l.strip()]
+    topics = []
+    if decisions:
+        topics.append("decisions agreed upon")
+    if tasks:
+        topics.append("tasks assigned")
+    if announcements:
+        topics.append("announcements made")
+    if deadlines:
+        topics.append("deadlines set")
         
-    summary = f"Discussion focused on society upkeep and safety. Parsed chat contains {len(lines)} lines of text. Residents raised concerns regarding water supply issues, security guard patrolling schedules, and the upcoming annual general meeting."
+    topics_str = ", ".join(topics) if topics else "general society discussions"
+    if non_empty_lines:
+        summary = f"Parsed chat contains {len(non_empty_lines)} messages covering {topics_str}."
+        sample = non_empty_lines[0]
+        summary += f" The discussion started with: \"{sample[:60]}...\"" if len(sample) > 60 else f" The discussion started with: \"{sample}\""
+    else:
+        summary = "No meaningful conversation content is available to generate a digest."
     
     return {
         "summary": summary,

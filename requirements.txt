@@ -12,3 +12,5 @@ pypdf
 reportlab
 pillow
 python-dotenv
+email-validator
+numpy
