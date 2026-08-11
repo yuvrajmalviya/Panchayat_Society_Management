@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { motion } from 'framer-motion';
+import heroBg from '../assets/hero.png';
 
 const AuthLayout = ({ children, title = "Panchayat AI", subtitle = "AI-Powered Society Portal" }) => {
   return (
@@ -14,11 +15,13 @@ const AuthLayout = ({ children, title = "Panchayat AI", subtitle = "AI-Powered S
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        // Sleek government gradient
-        background: 'linear-gradient(135deg, #1565C0 0%, #1e88e5 50%, #43A047 100%)',
         position: 'relative',
         py: 4,
-        overflowY: 'auto'
+        overflowY: 'auto',
+        backgroundImage: `linear-gradient(135deg, rgba(21,101,192,0.85) 0%, rgba(30,136,229,0.75) 50%, rgba(67,160,71,0.85) 100%), url(${heroBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       <Container maxWidth="xs" sx={{ position: 'relative', zIndex: 2 }}>
@@ -62,7 +65,9 @@ const AuthLayout = ({ children, title = "Panchayat AI", subtitle = "AI-Powered S
               width: '100%',
               borderRadius: 5,
               boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.20)',
-              bgcolor: 'background.paper',
+              bgcolor: 'rgba(255,255,255,0.94)',
+              backdropFilter: 'blur(18px)',
+              border: '1px solid rgba(255,255,255,0.5)',
             }}
           >
             {children}
